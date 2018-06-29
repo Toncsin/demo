@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style></style>
+    <title>Title</title>
+</head>
+<body>
+<h1 id="time"></h1>
+</body>
+<script>
+    var timer = setInterval(function () {
+        var now = new Date();
+        var leftTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 18, 0, 0) - now;
+        var H = ForMatTimeNumber(parseInt(leftTime / 1000 / 3600));
+        var M = ForMatTimeNumber(parseInt(leftTime / 1000 / 60 % 60));
+        var S = ForMatTimeNumber(parseInt(leftTime / 1000 % 60));
+        document.getElementById("time").innerHTML = "离下班还有 : " + H + " : " + M + " : " + S;
+        if (H == "00" && M == "00" && S == "00") {
+            clearInterval(timer);
+        }
+    }, 1000);
+
+    function ForMatTimeNumber(data) {
+        if (data < 10) {
+            return "0" + data;
+        } else {
+            return data
+        }
+    }
+</script>
+</html>
